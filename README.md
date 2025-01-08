@@ -1,4 +1,4 @@
-# IP capture
+# IP Capture
 <p align="left">
   <strong>-</strong>
   <br/>
