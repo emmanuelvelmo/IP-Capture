@@ -1,0 +1,36 @@
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IP Capture</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: rgb(0, 0, 0);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        h1 {
+            font-size: 3em;
+            color: rgb(255, 255, 255);
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="ip">IP<br>Loading...</h1>
+    <script>
+        fetch('/get-ip')
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('ip').innerHTML = `IP<br>${data.ip}`;
+            })
+            .catch(error => {
+                console.error('Error fetching IP:', error);
+                document.getElementById('ip').innerHTML = 'IP<br>Error loading IP';
+            });
+    </script>
+</body>
+</html>
