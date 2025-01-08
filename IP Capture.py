@@ -31,7 +31,7 @@ class servidor_1(BaseHTTPRequestHandler):
         else:
             self.send_response(404)
             self.end_headers()
-            self.wfile.write(b'404 - Página no encontrada')
+            self.wfile.write(b'404 - Page not found')
 
     def guardar_ip(self, ip_val):
         # Obtener la fecha y hora actual
@@ -42,11 +42,11 @@ class servidor_1(BaseHTTPRequestHandler):
             archivo_py.write(f"{fecha_hora} - {ip_val}\n")
 
 if __name__ == "__main__":
-    host = '0.0.0.0' # Escuchar en todas las interfaces
-    puerto = 3000 # Puerto 3000
+    host = '0.0.0.0'  # Escuchar en todas las interfaces
+    puerto = 3000     # Puerto 3000
     servidor_val = HTTPServer((host, puerto), servidor_1)
 
-    print(f"Servidor corriendo en http://{host}:{puerto}")
+    print(f"Server running at http://{host}:{puerto}")
 
     try:
         servidor_val.serve_forever()
