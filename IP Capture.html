@@ -1,33 +1,44 @@
 <html>
 <head>
+    <!-- Configuración del viewport para que la página sea responsive -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Título de la página -->
     <title>IP Capture</title>
+    <!-- Estilos CSS para la página -->
     <style>
+        /* Estilo general del cuerpo de la página */
         body {
-            font-family: Arial, sans-serif;
-            background-color: rgb(0, 0, 0);
+            font-family: Arial, sans-serif; /* Fuente del texto */
+            background-color: rgb(0, 0, 0); /* Fondo negro */
             display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
+            justify-content: center; /* Centrar contenido horizontalmente */
+            align-items: center; /* Centrar contenido verticalmente */
+            height: 100vh; /* Altura completa de la ventana */
+            margin: 0; /* Eliminar márgenes */
         }
+        /* Estilo del encabezado h1 */
         h1 {
-            font-size: 3em;
-            color: rgb(255, 255, 255);
-            text-align: center;
+            font-size: 3em; /* Tamaño de la fuente */
+            color: rgb(255, 255, 255); /* Color del texto (blanco) */
+            text-align: center; /* Centrar texto */
         }
     </style>
 </head>
 <body>
+    <!-- Encabezado que muestra la IP o un mensaje de carga/error -->
     <h1 id="ip">IP<br>Loading...</h1>
+
+    <!-- Script para obtener la IP del servidor y mostrarla en la página -->
     <script>
+        // Realizar una solicitud al servidor para obtener la IP
         fetch('/get-ip')
-            .then(response => response.json())
+            .then(response => response.json()) // Convertir la respuesta a JSON
             .then(data => {
+                // Mostrar la IP en el elemento con id "ip"
                 document.getElementById('ip').innerHTML = `IP<br>${data.ip}`;
             })
             .catch(error => {
+                // Manejar errores en caso de que falle la solicitud
                 console.error('Error fetching IP:', error);
                 document.getElementById('ip').innerHTML = 'IP<br>Error loading IP';
             });
